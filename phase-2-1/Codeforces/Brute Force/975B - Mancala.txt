@@ -1,0 +1,48 @@
+/* -----------------  إِنَّا لا نُضِيعُ أَجْرَ مَنْ أَحْسَنَ عَمَلا  ----------------- */
+#include <bits/stdc++.h>
+#define IOS ios::sync_with_stdio(false);cin.tie(0);
+#define ll long long
+#define ld long double
+#define For1(n) for(int i=0; i<n; i++)
+#define For2(n) for(int j=0; j<n; j++)
+#define test int t; cin >> t; while(t--) solve();
+#define sb << '\n'
+#define pi 3.14159265358979323846
+using namespace std;
+//#pragma GCC optimize("Ofast,unroll-loops,O3")
+//#pragma GCC target("avx2,tune=native")
+/* **************************************************************** */
+void solve() //SOLVE
+{
+    ll arr[14],ex[14],c;
+    vector<ll>vs;
+    For1(14) cin >> arr[i];
+    For1(14){
+        For2(14) ex[j]=arr[j];
+        vs.emplace_back();
+        c=arr[i]/14,ex[i]=0;
+        for(int j=i+1; ; j++){
+            if(j==14) j=0;
+            ex[j]+=c;
+            if(j==i) break;
+        }
+        c=arr[i]-c*14;
+        for(int j=i+1; c; j++){
+            if(j==14) j=0;
+            ex[j]++;
+            c--;
+        }
+        For2(14) if(!(ex[j]&1)) vs.back()+=ex[j];
+    }
+    sort(vs.begin(),vs.end());
+    cout << vs.back();
+}
+/* **************************************************************** */
+int main() //MAIN
+{
+    IOS
+    //test
+    solve();
+
+    return 0;
+}

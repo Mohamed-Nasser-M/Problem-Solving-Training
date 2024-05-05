@@ -1,0 +1,52 @@
+/* -----------------  إِنَّا لا نُضِيعُ أَجْرَ مَنْ أَحْسَنَ عَمَلا  ----------------- */
+#include <bits/stdc++.h>
+#define IOS ios::sync_with_stdio(false);cin.tie(0);
+#define ll long long
+#define ld long double
+#define For1(n) for(int i=0; i<n; i++)
+#define For2(n) for(int j=0; j<n; j++)
+#define test int t; cin >> t; while(t--) solve();
+#define sb << '\n'
+#define pi 3.14159265358979323846
+using namespace std;
+//#pragma GCC optimize("Ofast,unroll-loops,O3")
+//#pragma GCC target("avx2,tune=native")
+/* **************************************************************** */
+struct lap{
+    int a,b,c,d,pos;
+};
+void solve() //SOLVE
+{
+    int n,mini=1001,pos=0;
+    cin >> n;
+    vector<lap>arr(n);
+    vector<lap>::iterator it=arr.begin();
+    For1(n){
+        cin >> arr[i].a >> arr[i].b >> arr[i].c >> arr[i].d;
+        arr[i].pos=i;
+    }
+    For1(arr.size()){
+        For2(arr.size()){
+            if(arr[i].a<arr[j].a && arr[i].b<arr[j].b && arr[i].c<arr[j].c && arr[i].d<arr[j].d){
+                arr.erase(it);
+                i=-1;
+                it=arr.begin()-1;
+                break;
+            }
+        }
+        it++;
+    }
+    For1(arr.size())
+    if(arr[i].d<mini)
+        mini=arr[i].d,pos=arr[i].pos;
+    cout << pos+1;
+}
+/* **************************************************************** */
+int main() //MAIN
+{
+    IOS
+    //test
+    solve();
+
+    return 0;
+}

@@ -1,0 +1,43 @@
+/* -----------------  إِنَّا لا نُضِيعُ أَجْرَ مَنْ أَحْسَنَ عَمَلا  ----------------- */
+#include <bits/stdc++.h>
+#define IOS ios::sync_with_stdio(false);cin.tie(0);
+#define ll long long
+#define ld long double
+#define For1(n) for(int i=0; i<n; i++)
+#define For2(n) for(int j=0; j<n; j++)
+#define test int t; cin >> t; while(t--) solve();
+#define sb << '\n'
+#define pi 3.14159265358979323846
+using namespace std;
+//#pragma GCC optimize("Ofast,unroll-loops,O3")
+//#pragma GCC target("avx2,tune=native")
+/* **************************************************************** */
+vector<pair<int,int>>vs(367);
+void solve() //SOLVE
+{
+    int n,a,b,maxi=0;char c;
+    cin >> n;
+    For1(n){
+        cin >> c >> a >> b;
+        if(c=='M')
+            for(int j=a; j<=b; j++)
+                vs[j].first++;
+        else
+            for(int j=a; j<=b; j++)
+                vs[j].second++;
+    }
+    For1(367){
+        if(maxi<min(vs[i].first,vs[i].second))
+            maxi=min(vs[i].first,vs[i].second);
+    }
+    cout << maxi*2;
+}
+/* **************************************************************** */
+int main() //MAIN
+{
+    IOS
+    //test
+    solve();
+
+    return 0;
+}
